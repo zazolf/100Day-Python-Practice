@@ -11,7 +11,7 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 
 #Eazy Level - Order not randomised:
 #e.g. 4 letter, 2 symbol, 2 number = JduE&!91
-letter_password = ""
+letter_password = []
 for i in range(0,nr_letters):
  index_letters = random.randint(0, len(letters)-1)
  letter_part = letters[index_letters]
@@ -19,7 +19,7 @@ for i in range(0,nr_letters):
  print(letter_password)
 
 
-symbol_password = "" 
+symbol_password = [] 
 for i in range(0,nr_symbols):
  index_symbols = random.randint(0, len(symbols)-1)
  symbol_part = symbols[index_symbols]
@@ -27,13 +27,21 @@ for i in range(0,nr_symbols):
  print(symbol_password)
 
 
-number_password = ""
+number_password = []
 for i in range(0,nr_numbers):
  index_numbers = random.randint(0, len(numbers)-1)
  number_part = numbers[index_numbers]
  number_password += number_part
  print(number_password)
-password = letter_password + number_password + symbol_password
+#password = letter_password + number_password + symbol_password
 
-print("your password is", password)
+
+pass_list = number_password + letter_password + symbol_password
+total_number = nr_letters + nr_numbers + nr_symbols
+
+final_password = ""
+for i in range(0, total_number):
+ final_password += random.choice(pass_list)
+
+print("your password is", final_password)
 
