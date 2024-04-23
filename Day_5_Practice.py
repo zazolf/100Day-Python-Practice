@@ -37,11 +37,13 @@ for i in range(0,nr_numbers):
 
 
 pass_list = number_password + letter_password + symbol_password
-total_number = nr_letters + nr_numbers + nr_symbols
+#total_number = nr_letters + nr_numbers + nr_symbols
 
 final_password = ""
-for i in range(0, total_number):
+#for i in range(0, total_number):
+# final_password += random.choice(pass_list)
+for i in pass_list:
  final_password += random.choice(pass_list)
-
+ 
 print("your password is", final_password)
 
