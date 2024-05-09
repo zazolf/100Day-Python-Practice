@@ -26,8 +26,12 @@ def start_game():
 
     game = True
     while game:
-      if computer_score > 21:
-        print(" you won! coputer went over!")
+      if user_current_score == 21 and len(user_list) == 2:
+        print(" you won with a jackpot!")
+      elif computer_score == 21 and len(computer_list) == 2:
+        print(" you lost! computer won with a jackpot!")
+      elif computer_score > 21:
+        print(" you won! computer went over!")
         game = False
       elif user_current_score == 21:
         print(" you won!")
@@ -36,7 +40,7 @@ def start_game():
         print("you lost! you went over!")
         game = False
       elif computer_score == 21:
-        print("you lost! computer won!")
+        print("you lost!")
         game = False
       else: 
         repeat = input("Type 'y' to get another card, type 'n' to pass: ")
