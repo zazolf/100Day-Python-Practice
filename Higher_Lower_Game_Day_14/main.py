@@ -22,15 +22,14 @@ def guess_generation():
     message = f"Compare A: {A_dic['name']}, a {A_dic['description']}, from {A_dic['country']}\n{vs}\nCompare B: {B_dic['name']}, a {B_dic['description']}, from {B_dic['country']}"
     return A_follower, B_follower, message
 
-
+score = 0
 right_answer = True
 while right_answer:
     A_follower, B_follower, message = guess_generation()
     print(message)
-    answer = input("who has the most follower? Type 'A' or 'B'").lower()
+    answer = input("who has the most follower? Type 'A' or 'B'")
     A = A_follower
     B = B_follower
-    score = 0
     if answer == 'A' and A>B:
         score += 1
         print(f"You're right! your current score:{score}")
