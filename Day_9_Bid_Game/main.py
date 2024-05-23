@@ -2,11 +2,17 @@ bid_dic = {}
 def bid_dictionary(name, bid):
     bid_dic[name] = bid
     print(bid_dic) 
-
+import os
+def clear():
+  
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+        
 #HINT: You can call clear() to clear the output in the console.
 from art import logo
 print(logo)
-from replit import clear
 print("Welcome to the secret auction program!")
 repeat = True
 while repeat:
