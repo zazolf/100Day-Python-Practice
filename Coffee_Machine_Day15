@@ -1,0 +1,112 @@
+MENU = {
+    "espresso": {
+        "ingredients": {          
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+    
+    
+def choice():
+    choice = input("What would you like?(espresso/latte/cappuccino): ").lower()
+    user_choice = f"{choice}"
+    return user_choice
+    
+def resource_calc(request):
+        global resources
+        continue_function = True
+        for item in MENU[request]["ingredients"]:
+            if MENU[request]["ingredients"][item] > resources[item]:
+                print(f"sorry, we don't have enough {item}")
+                continue_function = False
+        for item in MENU[request]["ingredients"]:
+            resources[item] -= MENU[request]["ingredients"][item]
+        return continue_function, resources
+              
+
+def coin_calc(quarters_input, dimes_input, nickles_input, pennies_input):
+    quarter = 0.25
+    dime = 0.10
+    nickel = 0.05
+    penny = 0.01
+
+    total = (quarters_input * quarter) + (dimes_input * dime) + (nickles_input* nickel) + (pennies_input * penny)
+
+    return total
+
+def money_check(request):
+    user_input = coin_calc(quarters_input, dimes_input, nickles_input, pennies_input)
+    if user_input < MENU[request]["cost"]:
+        print("Sorry, That's not enough money. Money refunded")
+    elif user_input >= MENU[request]["cost"]:
+        remainder = user_input - MENU[request]["cost"]
+        print(f"Here is {remainder} in change.")
+        print("Here is your coffee. enjoy!") 
+        global money 
+        money += MENU[request]["cost"]
+        return money
+    
+
+def report():
+    
+    return (f'water : {resources["water"]},\
+          coffee : {resources["coffee"]},\
+          milk : {resources["milk"]},\
+          cost : {money}')
+   
+
+ 
+coffe_machine_on = True
+money = 0
+while coffe_machine_on:
+    request = choice()
+    if request == "report":
+        print(report())
+    elif request in MENU:
+        continue_function = resource_calc(request)
+        if continue_function:
+            print("Please enetr coins:")
+            quarters_input = int(input("How many quarters? "))
+            dimes_input = int(input("How many dimes? "))
+            nickles_input = int(input("How many nickles? "))
+            pennies_input = int(input("How many pennies? "))
+            money_check(request)
+    else:
+        print("invalid choice. Please select from the Menu")
+
+
+
+        
+    
+
+
+
+
+
+
+    
+   
